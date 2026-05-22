@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RevengeBench</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=PT+Mono&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="nav-left">
+                    <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                    <div class="logo">Revenge<span class="logo-accent">Bench</span></div>
+                </div>
+                <div class="nav-right">
+                    <div class="nav-links" id="nav-links">
+                        <a href="#leaderboard">Leaderboard</a>
+                        <a href="#pipeline">Pipeline</a>
+                        <a href="#arenas">Arenas</a>
+                        <a href="#protocol">Protocol</a>
+                        <a href="#findings">Findings</a>
+                        <a href="#team">Team</a>
+                    </div>
+                    <a href="https://github.com/serhez/revenge-bench" target="_blank" class="nav-github" aria-label="GitHub">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                        <svg class="theme-icon theme-icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                        <svg class="theme-icon theme-icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title">
+                <span class="title-main">Revenge</span><span class="title-accent">Bench</span>
+            </h1>
+            <p class="hero-subtitle">Reverse-engineering code space policies from behavioral experiments.</p>
+            <div class="hero-description">
+                <p>Given only behavioral traces of an opaque target agent acting in a game arena, can AI agents design experiments to reconstruct a runnable program that reproduces the target's behaviour?</p>
+            </div>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-primary" data-placeholder="paper">Read the Paper</a>
+                <a href="https://github.com/serhez/revenge-bench" target="_blank" class="btn btn-secondary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leaderboard -->
+    <section id="leaderboard" class="leaderboard">
+        <div class="container">
+            <h2 class="section-title">Leaderboard</h2>
+            <p class="section-description">Distance reduction across the five arenas. Higher is better.</p>
+            <div class="leaderboard-chart">
+                <div class="leaderboard-chart-wrapper">
+                    <canvas id="performanceChart"></canvas>
+                </div>
+            </div>
+            <div class="leaderboard-controls">
+                <label class="model-select-label">Elo tier:</label>
+                <div class="custom-dropdown">
+                    <div class="dropdown-selected" id="elo-tier-display">All targets</div>
+                    <div class="dropdown-options" id="elo-tier-options">
+                        <div class="dropdown-option active" data-value="all">All targets</div>
+                        <div class="dropdown-option" data-value="high">High Elo (top 5 per arena)</div>
+                        <div class="dropdown-option" data-value="mid">Mid Elo (next 5 per arena)</div>
+                        <div class="dropdown-option" data-value="low">Low Elo (bottom 5 per arena)</div>
+                    </div>
+                </div>
+            </div>
+            <div class="leaderboard-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Model</th>
+                            <th>Avg</th>
+                            <th class="arena-col">BattleSnake</th>
+                            <th class="arena-col">Halite</th>
+                            <th class="arena-col">HuskyBench</th>
+                            <th class="arena-col">RoboCode</th>
+                            <th class="arena-col">RobotRumble</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboard-data"></tbody>
+                </table>
+            </div>
+
+            <h3 class="section-subtitle">Per-arena breakdown</h3>
+            <div class="arena-tabs" role="tablist">
+                <button class="arena-tab active" data-arena="battlesnake" role="tab">BattleSnake</button>
+                <button class="arena-tab" data-arena="halite" role="tab">Halite</button>
+                <button class="arena-tab" data-arena="huskybench" role="tab">HuskyBench</button>
+                <button class="arena-tab" data-arena="robocode" role="tab">RoboCode</button>
+                <button class="arena-tab" data-arena="robotrumble" role="tab">RobotRumble</button>
+            </div>
+            <div class="leaderboard-chart">
+                <div class="leaderboard-chart-wrapper">
+                    <canvas id="detailedChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pipeline -->
+    <section id="pipeline" class="pipeline">
+        <div class="container">
+            <h2 class="section-title">Pipeline</h2>
+            <div class="pipeline-grid">
+                <div class="pipeline-stage pipeline-observation" data-step="01">
+                    <h3 class="pipeline-stage-title">Observation</h3>
+                    <p class="pipeline-stage-text">The learner watches the hidden policy play against a diverse pool of opponents.</p>
+                </div>
+                <div class="pipeline-stage pipeline-interaction" data-step="02">
+                    <h3 class="pipeline-stage-title">Interaction</h3>
+                    <p class="pipeline-stage-text">The learner authors probe opponents to elicit targeted behaviour and disambiguate competing hypotheses.</p>
+                </div>
+                <div class="pipeline-stage pipeline-evaluation" data-step="03">
+                    <h3 class="pipeline-stage-title">Evaluation</h3>
+                    <p class="pipeline-stage-text">The learner submits one runnable hypothesis, scored by how often it picks the same action as the hidden policy on held-out trajectories.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Arenas -->
+    <section id="arenas" class="arenas">
+        <div class="container">
+            <h2 class="section-title">Arenas</h2>
+            <p class="section-description">Five code-based arenas from CodeClash, spanning four programming languages and a range of game mechanics.</p>
+            <div class="arena-grid">
+                <a class="arena-card" href="https://codeclash.ai/arenas/battlesnake/" target="_blank">
+                    <div class="arena-thumb"><img src="assets/arenas/battlesnake.png" alt="BattleSnake board"></div>
+                    <div class="arena-meta">
+                        <h3 class="arena-name">BattleSnake</h3>
+                        <span class="arena-lang">Python</span>
+                    </div>
+                    <p class="arena-desc">Multi-snake survival on a grid; eat food, avoid walls and enemies.</p>
+                </a>
+                <a class="arena-card" href="https://codeclash.ai/arenas/halite/" target="_blank">
+                    <div class="arena-thumb"><img src="assets/arenas/halite.png" alt="Halite board"></div>
+                    <div class="arena-meta">
+                        <h3 class="arena-name">Halite</h3>
+                        <span class="arena-lang">C</span>
+                    </div>
+                    <p class="arena-desc">Resource-collection RTS; harvest energy with mobile ships on a grid.</p>
+                </a>
+                <a class="arena-card" href="https://codeclash.ai/arenas/poker/" target="_blank">
+                    <div class="arena-thumb"><img src="assets/arenas/huskybench.png" alt="HuskyBench poker"></div>
+                    <div class="arena-meta">
+                        <h3 class="arena-name">HuskyBench</h3>
+                        <span class="arena-lang">Python</span>
+                    </div>
+                    <p class="arena-desc">Heads-up no-limit Texas Hold'em poker.</p>
+                </a>
+                <a class="arena-card" href="https://codeclash.ai/arenas/robocode/" target="_blank">
+                    <div class="arena-thumb"><img src="assets/arenas/robocode.png" alt="RoboCode arena"></div>
+                    <div class="arena-meta">
+                        <h3 class="arena-name">RoboCode</h3>
+                        <span class="arena-lang">Java</span>
+                    </div>
+                    <p class="arena-desc">Real-time tank duels; control velocity, turning, and gun aim.</p>
+                </a>
+                <a class="arena-card" href="https://codeclash.ai/arenas/robotrumble/" target="_blank">
+                    <div class="arena-thumb"><img src="assets/arenas/robotrumble.png" alt="RobotRumble arena"></div>
+                    <div class="arena-meta">
+                        <h3 class="arena-name">RobotRumble</h3>
+                        <span class="arena-lang">JavaScript</span>
+                    </div>
+                    <p class="arena-desc">Turn-based unit combat in a small arena; one command per unit per turn.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Protocol -->
+    <section id="protocol" class="protocol">
+        <div class="container">
+            <h2 class="section-title">Protocol</h2>
+            <div class="protocol-content">
+                <p>RevengeBench operationalises an inverse problem in code-space: given only behavioural traces of an opaque target agent in a programming-game arena, can a learner reconstruct a runnable program that reproduces its decisions? Because targets are themselves executable, hypotheses can be scored mechanically against ground truth, a property that behavioural inverse problems normally lack.</p>
+                <ul class="protocol-list">
+                    <li><strong>Targets</strong>: top 15 strongest policies by Elo per arena, extracted from CodeClash tournaments. 75 in total.</li>
+                    <li><strong>Opponent pool</strong>: 20 opponents sampled each round from the remaining pool.</li>
+                    <li><strong>Starter policy</strong>: arena-specific naive baseline that every learner edits from.</li>
+                    <li><strong>Protocol</strong>: closed loop of observation, intervention through probe opponents, hypothesis formulation, and evaluation. 5 rounds with persistent memory; best round reported for each model.</li>
+                    <li><strong>Probe budget</strong>: 5 probe opponents per round in the intervention regime.</li>
+                    <li><strong>Harness</strong>: mini-SWE-agent.</li>
+                    <li><strong>Metric</strong>: distance reduction
+                        <span class="protocol-metric">$$\Delta = \frac{D_0 - D_R}{D_0}$$</span>
+                        where $D_0$ and $D_R$ are mean action distances of the starter policy $\hat{\pi}_0$ and the final hypothesis $\hat{\pi}_R$. Reporting $\Delta$ controls for differences in baseline difficulty across targets and arenas.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Findings -->
+    <section id="findings" class="findings">
+        <div class="container">
+            <h2 class="section-title">Findings</h2>
+            <div class="findings-carousel">
+                <div class="finding-slide active">
+                    <h3 class="finding-title">Recovered strategies are actionable intelligence</h3>
+                    <div class="finding-body">
+                        <p>We tested whether a recovered strategy is useful, not just accurate. A challenger LLM plays the original target with three levels of opponent intelligence: blind, recovered, or oracle. Across 5 challengers, 4 games, and 720 tournaments:</p>
+                        <ul>
+                            <li><strong>Ordering</strong>: oracle &gt; recovered &gt; blind across all five challengers.</li>
+                            <li><strong>Lift vs strength</strong>: weaker challengers benefit more, with a negative correlation between blind win rate and intel lift in all five models.</li>
+                            <li><strong>Persistence</strong>: the lift decays for strong models as their blind baseline catches up, but persists for weak ones.</li>
+                        </ul>
+                    </div>
+                    <div class="finding-figure">
+                        <img src="assets/figures/pvp_combined_summary_lift.svg" alt="Forward-PvP win rate and intel lift">
+                    </div>
+                </div>
+                <div class="finding-slide">
+                    <h3 class="finding-title">Placeholder finding</h3>
+                    <div class="finding-body">
+                        <p>Short narrative goes here.</p>
+                        <ul>
+                            <li><strong>Label</strong>: detail.</li>
+                            <li><strong>Label</strong>: detail.</li>
+                            <li><strong>Label</strong>: detail.</li>
+                        </ul>
+                    </div>
+                    <div class="finding-figure">
+                        <!-- Drop a figure here, e.g. <img src="assets/figures/..." alt="..."> -->
+                    </div>
+                </div>
+                <div class="carousel-nav">
+                    <button class="carousel-prev" aria-label="Previous">‹</button>
+                    <div class="carousel-dots"></div>
+                    <button class="carousel-next" aria-label="Next">›</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section id="team" class="team">
+        <div class="container">
+            <h2 class="section-title">Team</h2>
+            <div class="team-inline">
+                <a href="https://babak70.github.io/" class="team-lead">Babak Rahmani</a><sup><span class="team-star">*</span></sup>,
+                <a href="https://sebastiandziadzio.com/" class="team-lead">Sebastian Dziadzio</a><sup><span class="team-star">*</span></sup>,
+                <a href="https://scholar.google.com/citations?user=-arSHMAAAAAJ&amp;hl=de" class="team-lead">Joschka Strüber</a><sup><span class="team-star">*</span></sup>,
+                <a href="https://sergiohg.com/" class="team-lead">Sergio Hernández Gutiérrez</a><sup><span class="team-star">*</span></sup>,
+                <a href="https://scholar.google.de/citations?user=0z0fNxUAAAAJ&amp;hl=en" class="team-lead">Matthias Bethge</a>
+            </div>
+            <div class="team-affiliations">
+                <span class="team-equal-contrib">*Equal contribution</span>
+                <div class="team-affiliation-logos">
+                    <a class="team-affiliation-logo" href="https://tuebingen.ai/" target="_blank" rel="noopener" aria-label="Tübingen AI Center">
+                        <img src="assets/affiliations/tuai_logo.png" alt="Tübingen AI Center">
+                    </a>
+                    <a class="team-affiliation-logo" href="https://uni-tuebingen.de/" target="_blank" rel="noopener" aria-label="Eberhard Karls Universität Tübingen">
+                        <img src="assets/affiliations/uni_logo.png" alt="Eberhard Karls Universität Tübingen">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Citation -->
+    <section id="citation" class="citation">
+        <div class="container">
+            <h2 class="section-title">Citation</h2>
+            <p class="section-description">If you found RevengeBench useful, please cite us as:</p>
+            <div class="citation-box">
+                <pre class="citation-text">@article{revengebench_2026,
+  title  = {RevengeBench: Reverse Engineering Code-Space Policies from Behavioral Experiments},
+  author = {Babak Rahmani and Sebastian Dziadzio and Joschka Strüber and Sergio Hernández Gutiérrez and Matthias Bethge},
+  year   = {2026},
+}</pre>
+                <button class="copy-btn" id="copy-citation" aria-label="Copy citation">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    Copy
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, { delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}] });"></script>
+    <script src="config.js"></script>
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
