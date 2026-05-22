@@ -28,8 +28,8 @@
                 <div class="nav-right">
                     <div class="nav-links" id="nav-links">
                         <a href="#leaderboard">Leaderboard</a>
-                        <a href="#pipeline">Pipeline</a>
                         <a href="#arenas">Arenas</a>
+                        <a href="#pipeline">Pipeline</a>
                         <a href="#protocol">Protocol</a>
                         <a href="#findings">Findings</a>
                         <a href="#team">Team</a>
@@ -70,7 +70,7 @@
             </div>
             <p class="hero-subtitle">Reverse-engineering code space policies from behavioral experiments.</p>
             <div class="hero-description">
-                <p>Given only behavioral traces of an opaque target agent acting in a game arena, can AI agents design experiments to reconstruct a runnable program that reproduces the target's behaviour?</p>
+                <p>Can AI agents reconstruct a target bot's code by watching it play a game and probing it with opponents of their own design?</p>
             </div>
             <div class="hero-buttons">
                 <a href="#" class="btn btn-primary" data-placeholder="paper">Read the Paper</a>
@@ -139,27 +139,6 @@
         </div>
     </section>
 
-    <!-- Pipeline -->
-    <section id="pipeline" class="pipeline">
-        <div class="container">
-            <h2 class="section-title">Pipeline</h2>
-            <div class="pipeline-grid">
-                <div class="pipeline-stage pipeline-observation" data-step="01">
-                    <h3 class="pipeline-stage-title">Observation</h3>
-                    <p class="pipeline-stage-text">The learner watches the hidden policy play against a diverse pool of opponents.</p>
-                </div>
-                <div class="pipeline-stage pipeline-interaction" data-step="02">
-                    <h3 class="pipeline-stage-title">Interaction</h3>
-                    <p class="pipeline-stage-text">The learner authors probe opponents to elicit targeted behaviour and disambiguate competing hypotheses.</p>
-                </div>
-                <div class="pipeline-stage pipeline-evaluation" data-step="03">
-                    <h3 class="pipeline-stage-title">Evaluation</h3>
-                    <p class="pipeline-stage-text">The learner submits one runnable hypothesis, scored by how often it picks the same action as the hidden policy on held-out trajectories.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Arenas -->
     <section id="arenas" class="arenas">
         <div class="container">
@@ -206,6 +185,27 @@
                     </div>
                     <p class="arena-desc">Turn-based combat in an arena: one command per unit per turn.</p>
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pipeline -->
+    <section id="pipeline" class="pipeline">
+        <div class="container">
+            <h2 class="section-title">Pipeline</h2>
+            <div class="pipeline-grid">
+                <div class="pipeline-stage pipeline-observation" data-step="01">
+                    <h3 class="pipeline-stage-title">Observation</h3>
+                    <p class="pipeline-stage-text">The learner watches the hidden policy play against a diverse pool of opponents.</p>
+                </div>
+                <div class="pipeline-stage pipeline-interaction" data-step="02">
+                    <h3 class="pipeline-stage-title">Interaction</h3>
+                    <p class="pipeline-stage-text">The learner authors probe opponents to elicit targeted behaviour and disambiguate competing hypotheses.</p>
+                </div>
+                <div class="pipeline-stage pipeline-evaluation" data-step="03">
+                    <h3 class="pipeline-stage-title">Evaluation</h3>
+                    <p class="pipeline-stage-text">The learner submits one runnable hypothesis, scored by how often it picks the same action as the hidden policy on held-out trajectories.</p>
+                </div>
             </div>
         </div>
     </section>
