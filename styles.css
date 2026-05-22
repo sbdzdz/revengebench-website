@@ -2637,3 +2637,26 @@ html { font-size: 19px; }
 @media (max-width: 640px) {
     .findings-tab { padding: 0.7rem 0.4rem; font-size: 0.7rem; }
 }
+
+.arena-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+.arena-card .arena-meta { position: relative; min-height: 1.6rem; }
+img.arena-lang {
+    height: 1.75rem;
+    width: auto;
+    border: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+img.arena-lang[src$="java.svg"] { height: 2.25rem; }
+img.arena-lang::before { content: none; }
+[data-theme="dark"] img.arena-lang { filter: invert(1); }
