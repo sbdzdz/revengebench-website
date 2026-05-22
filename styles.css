@@ -2545,3 +2545,22 @@ html { font-size: 19px; }
 
 .hero .hero-description { max-width: 800px; margin: 0 0 2rem 0; }
 .hero .hero-description p { max-width: 800px; }
+
+.hero-title-row {
+    position: relative;
+    margin-bottom: 1rem;
+}
+.hero-title-row .hero-title { margin-bottom: 0; }
+.hero-logo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: clamp(6.5rem, 17vw, 14rem);
+    width: auto;
+    display: block;
+}
+@media (max-width: 640px) {
+    .hero-logo { position: static; height: 5rem; margin-top: 1rem; }
+}
+
+[data-theme="dark"] .hero-logo { filter: invert(1); }

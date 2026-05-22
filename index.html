@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RevengeBench</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="assets/benchmark_logo.svg" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/svg+xml" href="assets/benchmark_logo_dark.svg" media="(prefers-color-scheme: dark)">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=PT+Mono&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -61,9 +62,12 @@
 
     <section class="hero">
         <div class="container">
-            <h1 class="hero-title">
-                <span class="title-main">Revenge</span><span class="title-accent">Bench</span>
-            </h1>
+            <div class="hero-title-row">
+                <h1 class="hero-title">
+                    <span class="title-main">Revenge</span><span class="title-accent">Bench</span>
+                </h1>
+                <img class="hero-logo" src="assets/benchmark_logo.svg" alt="">
+            </div>
             <p class="hero-subtitle">Reverse-engineering code space policies from behavioral experiments.</p>
             <div class="hero-description">
                 <p>Given only behavioral traces of an opaque target agent acting in a game arena, can AI agents design experiments to reconstruct a runnable program that reproduces the target's behaviour?</p>
