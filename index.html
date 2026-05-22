@@ -124,7 +124,6 @@
                 </table>
             </div>
 
-            <h3 class="section-subtitle">Per-arena breakdown</h3>
             <div class="arena-tabs" role="tablist">
                 <button class="arena-tab active" data-arena="battlesnake" role="tab">BattleSnake</button>
                 <button class="arena-tab" data-arena="halite" role="tab">Halite</button>
@@ -238,14 +237,19 @@
         <div class="container">
             <h2 class="section-title">Findings</h2>
             <div class="findings-carousel">
+                <div class="findings-tabs" role="tablist">
+                    <button class="findings-tab active" data-index="0" role="tab">Recovered intel</button>
+                    <button class="findings-tab" data-index="1" role="tab">Placeholder finding</button>
+                    <button class="findings-tab" data-index="2" role="tab">Placeholder finding</button>
+                </div>
                 <div class="finding-slide active">
                     <h3 class="finding-title">Recovered strategies are actionable intelligence</h3>
                     <div class="finding-body">
                         <p>We tested whether a recovered strategy is useful, not just accurate. A challenger LLM plays the original target with three levels of opponent intelligence: blind, recovered, or oracle. Across 5 challengers, 4 games, and 720 tournaments:</p>
                         <ul>
-                            <li><strong>Ordering</strong>: oracle &gt; recovered &gt; blind across all five challengers.</li>
-                            <li><strong>Lift vs strength</strong>: weaker challengers benefit more, with a negative correlation between blind win rate and intel lift in all five models.</li>
-                            <li><strong>Persistence</strong>: the lift decays for strong models as their blind baseline catches up, but persists for weak ones.</li>
+                            <li><strong>Recovered strategies help in designing counter-strategies</strong>: oracle &gt; recovered &gt; blind across all five models.</li>
+                            <li><strong>Weaker models benefit more</strong>: there is a negative correlation between blind win rate and how much the recovered policy helps.</li>
+                            <li><strong>Stronger models catch up</strong>: the recovered-policy advantage shrinks over rounds for strong models as their blind play catches up.</li>
                         </ul>
                     </div>
                     <div class="finding-figure">
@@ -266,10 +270,19 @@
                         <!-- Drop a figure here, e.g. <img src="assets/figures/..." alt="..."> -->
                     </div>
                 </div>
-                <div class="carousel-nav">
-                    <button class="carousel-prev" aria-label="Previous">‹</button>
-                    <div class="carousel-dots"></div>
-                    <button class="carousel-next" aria-label="Next">›</button>
+                <div class="finding-slide">
+                    <h3 class="finding-title">Placeholder finding</h3>
+                    <div class="finding-body">
+                        <p>Short narrative goes here.</p>
+                        <ul>
+                            <li><strong>Label</strong>: detail.</li>
+                            <li><strong>Label</strong>: detail.</li>
+                            <li><strong>Label</strong>: detail.</li>
+                        </ul>
+                    </div>
+                    <div class="finding-figure">
+                        <!-- Drop a figure here, e.g. <img src="assets/figures/..." alt="..."> -->
+                    </div>
                 </div>
             </div>
         </div>

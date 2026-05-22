@@ -397,36 +397,16 @@ bindDropdown(
 const carousel = document.querySelector('.findings-carousel');
 if (carousel) {
     const slides = carousel.querySelectorAll('.finding-slide');
-    const prevBtn = carousel.querySelector('.carousel-prev');
-    const nextBtn = carousel.querySelector('.carousel-next');
-    const dots = carousel.querySelector('.carousel-dots');
-    let idx = 0;
+    const tabs = carousel.querySelectorAll('.findings-tab');
 
     const show = (i) => {
-        idx = (i + slides.length) % slides.length;
-        slides.forEach((s, j) => s.classList.toggle('active', j === idx));
-        dots?.querySelectorAll('.carousel-dot').forEach((d, j) => d.classList.toggle('active', j === idx));
+        slides.forEach((s, j) => s.classList.toggle('active', j === i));
+        tabs.forEach((n, j) => n.classList.toggle('active', j === i));
     };
 
-    if (slides.length <= 1) {
-        prevBtn?.style.setProperty('display', 'none');
-        nextBtn?.style.setProperty('display', 'none');
-        dots?.style.setProperty('display', 'none');
-    } else {
-        slides.forEach((_, i) => {
-            const dot = document.createElement('button');
-            dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-            dot.setAttribute('aria-label', `Slide ${i + 1}`);
-            dot.addEventListener('click', () => show(i));
-            dots.appendChild(dot);
-        });
-        prevBtn.addEventListener('click', () => show(idx - 1));
-        nextBtn.addEventListener('click', () => show(idx + 1));
-        document.addEventListener('keydown', e => {
-            if (e.key === 'ArrowLeft')  show(idx - 1);
-            if (e.key === 'ArrowRight') show(idx + 1);
-        });
-    }
+    tabs.forEach((btn, i) => {
+        btn.addEventListener('click', () => show(i));
+    });
 }
 
 // ─────────────────────────────────────────────────────────────────────────

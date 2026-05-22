@@ -2488,10 +2488,11 @@ html { font-size: 19px; }
 .finding-body li { color: var(--text-secondary); }
 .finding-body strong { color: var(--text-primary); }
 
-.leaderboard .leaderboard-chart { margin-bottom: 4rem; }
-.leaderboard .leaderboard-table { margin-bottom: 4rem; }
-.leaderboard .leaderboard-controls { margin: 1rem 0 2rem; }
-.leaderboard .section-subtitle { margin: 5rem 0 1.5rem; }
+.leaderboard .leaderboard-chart { margin-bottom: 6rem; }
+.leaderboard .leaderboard-table { margin-bottom: 6rem; }
+.leaderboard .leaderboard-controls { margin: 0 0 1.5rem; }
+.leaderboard .arena-tabs { margin: 0 0 1.5rem; }
+.leaderboard .leaderboard-chart:last-of-type { margin-bottom: 0; }
 
 .team-affiliation-logo {
     display: block;
@@ -2555,7 +2556,7 @@ html { font-size: 19px; }
     position: absolute;
     top: 0;
     right: 0;
-    height: clamp(6.5rem, 17vw, 14rem);
+    height: clamp(5rem, 13vw, 11rem);
     width: auto;
     display: block;
 }
@@ -2564,3 +2565,75 @@ html { font-size: 19px; }
 }
 
 [data-theme="dark"] .hero-logo { filter: invert(1); }
+
+.findings-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin: 0 0 2.5rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1rem;
+}
+.findings-nav-item {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: var(--text-secondary);
+    text-align: left;
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    font-family: inherit;
+    transition: color 0.15s ease;
+}
+.findings-nav-item:hover { color: var(--text-primary); }
+.findings-nav-item.active { color: var(--text-primary); }
+.findings-nav-num {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: inherit;
+    opacity: 0.55;
+}
+.findings-nav-item.active .findings-nav-num { opacity: 1; }
+.findings-nav-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: inherit;
+}
+
+.findings-tabs {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin: 0 0 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+.findings-tab {
+    flex: 1 1 0;
+    text-align: center;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    padding: 0.9rem 0.5rem;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+}
+.findings-tab:hover { color: var(--text-primary); }
+.findings-tab.active {
+    color: var(--text-primary);
+    border-bottom-color: var(--text-primary);
+}
+@media (max-width: 640px) {
+    .findings-tab { padding: 0.7rem 0.4rem; font-size: 0.7rem; }
+}
