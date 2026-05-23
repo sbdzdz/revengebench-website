@@ -2345,8 +2345,11 @@ section {
 .arena-card:hover { transform: none; box-shadow: none; border: none; }
 .arena-card:hover .arena-name { text-decoration: underline; text-underline-offset: 4px; }
 .arena-thumb {
-    height: 180px;
+    aspect-ratio: 1 / 1;
+    height: auto;
     background: var(--bg-tertiary);
+    border: none;
+    border-radius: 0;
     margin-bottom: 1rem;
 }
 .arena-meta { display: block; margin-bottom: 0.35rem; }
@@ -2660,3 +2663,5 @@ img.arena-lang {
 img.arena-lang[src$="java.svg"] { height: 2.25rem; }
 img.arena-lang::before { content: none; }
 [data-theme="dark"] img.arena-lang { filter: invert(1); }
+
+[data-theme="dark"] .arena-thumb img { filter: invert(1); }

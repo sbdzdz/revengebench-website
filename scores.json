@@ -4,7 +4,7 @@
   "arenas": [
     "battlesnake",
     "halite",
-    "huskybench",
+    "poker",
     "robocode",
     "robotrumble"
   ],
@@ -15,9 +15,9 @@
       "scores": {
         "battlesnake": 60.9,
         "halite": 37.1,
-        "huskybench": 73.6,
         "robocode": 28.6,
-        "robotrumble": 30.5
+        "robotrumble": 30.5,
+        "poker": 73.6
       },
       "n_runs": 75
     },
@@ -27,9 +27,9 @@
       "scores": {
         "battlesnake": 72.3,
         "halite": 42.6,
-        "huskybench": 73.0,
         "robocode": 44.1,
-        "robotrumble": 62.5
+        "robotrumble": 62.5,
+        "poker": 73.0
       },
       "n_runs": 75
     },
@@ -39,9 +39,9 @@
       "scores": {
         "battlesnake": 64.9,
         "halite": 62.5,
-        "huskybench": 63.6,
         "robocode": 37.9,
-        "robotrumble": 4.8
+        "robotrumble": 4.8,
+        "poker": 63.6
       },
       "n_runs": 75
     },
@@ -51,9 +51,9 @@
       "scores": {
         "battlesnake": 66.4,
         "halite": 62.3,
-        "huskybench": 68.5,
         "robocode": 33.7,
-        "robotrumble": 30.5
+        "robotrumble": 30.5,
+        "poker": 68.5
       },
       "n_runs": 375
     },
@@ -63,9 +63,9 @@
       "scores": {
         "battlesnake": 70.5,
         "halite": 60.8,
-        "huskybench": 78.0,
         "robocode": 56.8,
-        "robotrumble": 71.1
+        "robotrumble": 71.1,
+        "poker": 78.0
       },
       "n_runs": 75
     },
@@ -75,9 +75,9 @@
       "scores": {
         "battlesnake": 51.5,
         "halite": 73.3,
-        "huskybench": 44.2,
         "robocode": 43.0,
-        "robotrumble": 37.4
+        "robotrumble": 37.4,
+        "poker": 44.2
       },
       "n_runs": 75
     },
@@ -87,9 +87,9 @@
       "scores": {
         "battlesnake": 73.5,
         "halite": 63.9,
-        "huskybench": 82.2,
         "robocode": 70.7,
-        "robotrumble": 65.2
+        "robotrumble": 65.2,
+        "poker": 82.2
       },
       "n_runs": 75
     },
@@ -99,9 +99,9 @@
       "scores": {
         "battlesnake": 77.6,
         "halite": 61.4,
-        "huskybench": 76.3,
         "robocode": 73.3,
-        "robotrumble": 71.0
+        "robotrumble": 71.0,
+        "poker": 76.3
       },
       "n_runs": 75
     },
@@ -111,9 +111,9 @@
       "scores": {
         "battlesnake": 40.8,
         "halite": 59.8,
-        "huskybench": 40.5,
         "robocode": 18.1,
-        "robotrumble": 9.5
+        "robotrumble": 9.5,
+        "poker": 40.5
       },
       "n_runs": 75
     },
@@ -123,9 +123,9 @@
       "scores": {
         "battlesnake": 41.3,
         "halite": 66.7,
-        "huskybench": 60.6,
         "robocode": 48.0,
-        "robotrumble": 19.2
+        "robotrumble": 19.2,
+        "poker": 60.6
       },
       "n_runs": 75
     },
@@ -135,9 +135,9 @@
       "scores": {
         "battlesnake": 70.6,
         "halite": 64.4,
-        "huskybench": 58.4,
         "robocode": 44.6,
-        "robotrumble": 61.5
+        "robotrumble": 61.5,
+        "poker": 58.4
       },
       "n_runs": 75
     },
@@ -147,9 +147,9 @@
       "scores": {
         "battlesnake": 48.9,
         "halite": 41.5,
-        "huskybench": 74.4,
         "robocode": 23.2,
-        "robotrumble": 26.1
+        "robotrumble": 26.1,
+        "poker": 74.4
       },
       "n_runs": 75
     }

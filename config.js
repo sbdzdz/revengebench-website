@@ -5,7 +5,7 @@
 const arenas = [
     { key: "battlesnake", name: "BattleSnake", language: "Python",     link: "https://codeclash.ai/arenas/battlesnake/" },
     { key: "halite",      name: "Halite",      language: "C",          link: "https://codeclash.ai/arenas/halite/" },
-    { key: "huskybench",  name: "HuskyBench",  language: "Python",     link: "https://codeclash.ai/arenas/poker/" },
+    { key: "poker",  name: "Poker",  language: "Python",     link: "https://codeclash.ai/arenas/poker/" },
     { key: "robocode",    name: "RoboCode",    language: "Java",       link: "https://codeclash.ai/arenas/robocode/" },
     { key: "robotrumble", name: "RobotRumble", language: "JavaScript", link: "https://codeclash.ai/arenas/robotrumble/" }
 ];
@@ -13,7 +13,7 @@ const arenas = [
 const arenaDescriptions = {
     battlesnake: "Multi-snake survival on a grid; eat food, avoid walls and enemies.",
     halite:      "Resource-collection RTS; harvest energy with mobile ships on a grid.",
-    huskybench:  "Heads-up no-limit Texas Hold'em poker.",
+    poker:  "Heads-up no-limit Texas Hold'em poker.",
     robocode:    "Real-time tank duels; control velocity, turning, and gun aim.",
     robotrumble: "Turn-based unit combat in a small arena; one command per unit per turn."
 };
