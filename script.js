@@ -392,6 +392,17 @@ bindDropdown(
 );
 
 // ─────────────────────────────────────────────────────────────────────────
+// Arena card descriptions — pulled from config.js arenaDescriptions
+// ─────────────────────────────────────────────────────────────────────────
+document.querySelectorAll('.arena-card').forEach(card => {
+    const key = card.dataset.arena;
+    const desc = card.querySelector('.arena-desc');
+    if (key && desc && arenaDescriptions[key]) {
+        desc.textContent = arenaDescriptions[key];
+    }
+});
+
+// ─────────────────────────────────────────────────────────────────────────
 // Findings carousel
 // ─────────────────────────────────────────────────────────────────────────
 const carousel = document.querySelector('.findings-carousel');

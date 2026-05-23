@@ -11,11 +11,11 @@ const arenas = [
 ];
 
 const arenaDescriptions = {
-    battlesnake: "Multi-snake survival on a grid; eat food, avoid walls and enemies.",
-    halite:      "Resource-collection RTS; harvest energy with mobile ships on a grid.",
-    poker:  "Heads-up no-limit Texas Hold'em poker.",
-    robocode:    "Real-time tank duels; control velocity, turning, and gun aim.",
-    robotrumble: "Turn-based unit combat in a small arena; one command per unit per turn."
+    battlesnake: "Multi-snake survival: eat food, avoid walls and enemies.",
+    halite:      "Resource collection: harvest mineral deposits with a fleet of ships.",
+    poker:       "Heads-up poker: bet, call, fold, or raise against a single opponent.",
+    robocode:    "Tank duels: control velocity, turning, and gun aim.",
+    robotrumble: "Robot swarm combat: command each unit on every turn."
 };
 
 // Elo tiers (filters the underlying targets, not the model list).
