@@ -14,7 +14,7 @@ const arenaDescriptions = {
     battlesnake: "Multi-snake survival: eat food, avoid walls and enemies.",
     halite:      "Resource collection: harvest mineral deposits with a fleet of ships.",
     poker:       "Heads-up Texas Hold'em: bet, call, fold, or raise against a single opponent.",
-    robocode:    "Tank duels: control velocity, turning, and gun aim.",
+    robocode:    "Tank duels: control velocity, direction, and turret heading.",
     robotrumble: "Robot swarm combat: command each unit on every turn."
 };
 
