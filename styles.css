@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 :root {
     /* Dark theme — near-black, near-white */
     --bg-primary: #0e0e0e;
@@ -352,6 +356,7 @@ body {
 /* Section Styles */
 section {
     padding: 4rem 0;
+    scroll-margin-top: 64px;  /* clear the sticky navbar when anchored to */
 }
 
 .section-title {
@@ -2508,9 +2513,13 @@ html { font-size: 19px; }
     width: auto;
     display: block;
     transition: opacity 0.2s ease;
+    /* Soften pure-black logo pixels to match the off-black headline color.
+       invert() of pure black yields a flat grey: invert(10.2%) → #1a1a1a. */
+    filter: invert(10.2%);
 }
 .team-affiliation-logo:hover img { opacity: 0.75; }
-[data-theme="dark"] .team-affiliation-logo img { filter: invert(1); }
+/* Dark theme: invert(96.1%) → #f5f5f5, matching --text-primary in dark mode. */
+[data-theme="dark"] .team-affiliation-logo img { filter: invert(96.1%); }
 
 .findings-carousel .carousel-prev,
 .findings-carousel .carousel-next {
