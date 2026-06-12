@@ -28,8 +28,8 @@
                 <div class="nav-right">
                     <div class="nav-links" id="nav-links">
                         <a href="#leaderboard">Leaderboard</a>
-                        <a href="#arenas">Arenas</a>
                         <a href="#pipeline">Pipeline</a>
+                        <a href="#arenas">Arenas</a>
                         <a href="#protocol">Protocol</a>
                         <a href="#findings">Findings</a>
                         <a href="#team">Team</a>
@@ -139,6 +139,27 @@
         </div>
     </section>
 
+    <!-- Pipeline -->
+    <section id="pipeline" class="pipeline">
+        <div class="container">
+            <h2 class="section-title">Pipeline</h2>
+            <div class="pipeline-grid">
+                <div class="pipeline-stage pipeline-observation" data-step="01">
+                    <h3 class="pipeline-stage-title">Observation</h3>
+                    <p class="pipeline-stage-text"><strong>Passive phase</strong>: the learner inspects the game traces of the hidden policy playing against a diverse set of opponents sampled from a policy pool.</p>
+                </div>
+                <div class="pipeline-stage pipeline-interaction" data-step="02">
+                    <h3 class="pipeline-stage-title">Intervention</h3>
+                    <p class="pipeline-stage-text"><strong>Active phase</strong>: the learner designs probe opponents to elicit specific behaviour from the hidden policy and disambiguate competing hypotheses.</p>
+                </div>
+                <div class="pipeline-stage pipeline-evaluation" data-step="03">
+                    <h3 class="pipeline-stage-title">Evaluation</h3>
+                    <p class="pipeline-stage-text"><strong>Test phase</strong>: the learner submits one executable policy, scored by how often it picks the same action as the hidden policy on held-out trajectories.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Arenas -->
     <section id="arenas" class="arenas">
         <div class="container">
@@ -185,27 +206,6 @@
                     </div>
                     <p class="arena-desc"></p>
                 </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pipeline -->
-    <section id="pipeline" class="pipeline">
-        <div class="container">
-            <h2 class="section-title">Pipeline</h2>
-            <div class="pipeline-grid">
-                <div class="pipeline-stage pipeline-observation" data-step="01">
-                    <h3 class="pipeline-stage-title">Observation</h3>
-                    <p class="pipeline-stage-text"><strong>Passive phase</strong>: the learner inspects the game traces of the hidden policy playing against a diverse set of opponents sampled from a policy pool.</p>
-                </div>
-                <div class="pipeline-stage pipeline-interaction" data-step="02">
-                    <h3 class="pipeline-stage-title">Intervention</h3>
-                    <p class="pipeline-stage-text"><strong>Active phase</strong>: the learner designs probe opponents to elicit specific behaviour from the hidden policy and disambiguate competing hypotheses.</p>
-                </div>
-                <div class="pipeline-stage pipeline-evaluation" data-step="03">
-                    <h3 class="pipeline-stage-title">Evaluation</h3>
-                    <p class="pipeline-stage-text"><strong>Test phase</strong>: the learner submits one executable policy, scored by how often it picks the same action as the hidden policy on held-out trajectories.</p>
-                </div>
             </div>
         </div>
     </section>
@@ -296,7 +296,7 @@
                 <a href="https://babak70.github.io/" class="team-lead">Babak Rahmani</a><sup><span class="team-star">*</span></sup>,
                 <a href="https://sebastiandziadzio.com/" class="team-lead">Sebastian Dziadzio</a><sup><span class="team-star">*</span></sup>,
                 <a href="https://scholar.google.com/citations?user=-arSHMAAAAAJ&amp;hl=de" class="team-lead">Joschka Strüber</a><sup><span class="team-star">*</span></sup>,
-                <a href="https://sergiohg.com/" class="team-lead">Sergio Hernández Gutiérrez</a><sup><span class="team-star">*</span></sup>,
+                <a href="https://sergiohg.com/" class="team-lead">Sergio Hernández Gutiérrez</a>,
                 <a href="https://scholar.google.de/citations?user=0z0fNxUAAAAJ&amp;hl=en" class="team-lead">Matthias Bethge</a>
             </div>
             <div class="team-affiliations">
