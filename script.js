@@ -443,13 +443,19 @@ if (copyBtn) {
 // ─────────────────────────────────────────────────────────────────────────
 const logo = document.querySelector('.logo');
 const hero = document.querySelector('.hero');
-if (logo && hero) {
+const heroTitle = document.querySelector('.hero-title');
+if (logo && hero && heroTitle) {
     const update = () => {
-        const heroBottom = hero.getBoundingClientRect().bottom;
-        logo.classList.toggle('visible', heroBottom <= 64);
+        const titleBottom = heroTitle.getBoundingClientRect().bottom;
+        logo.classList.toggle('visible', titleBottom <= 64);
     };
     window.addEventListener('scroll', update, { passive: true });
     update();
+
+    logo.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 }
 
 // ─────────────────────────────────────────────────────────────────────────

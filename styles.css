@@ -241,7 +241,6 @@ body {
     font-size: 1.25rem;
     color: var(--text-secondary);
     margin-bottom: 1.5rem;
-    white-space: nowrap;
     letter-spacing: 0.02em;
     margin-top: 0.5rem;
 }
@@ -2140,11 +2139,13 @@ body {
 }
 .hero-subtitle {
     font-size: 1.3rem;
-    white-space: nowrap;
     max-width: none;
     margin: 1rem 0 1rem 0;
     color: var(--text-secondary);
     letter-spacing: 0;
+}
+@media (min-width: 900px) {
+    .hero-subtitle { white-space: nowrap; }
 }
 .hero-description {
     max-width: 720px;
@@ -2435,7 +2436,8 @@ section {
 .nav-links a { color: var(--text-secondary); font-size: 1rem; }
 .logo { font-size: 1.4rem; }
 .nav-links a:hover { color: var(--text-primary); }
-.logo { font-weight: 600; letter-spacing: -0.01em; }
+.logo { font-weight: 700; letter-spacing: -0.02em; text-decoration: none; cursor: pointer; }
+.logo.visible { opacity: 1; visibility: visible; }
 .logo-accent { color: var(--text-primary); }
 
 .title-accent { color: var(--text-primary); }
@@ -2562,6 +2564,9 @@ html { font-size: 19px; }
     height: clamp(5rem, 13vw, 11rem);
     width: auto;
     display: block;
+}
+@media (min-width: 641px) and (max-width: 1024px) {
+    .hero-logo { height: clamp(3rem, 8vw, 5rem); }
 }
 @media (max-width: 640px) {
     .hero-logo { position: static; height: 5rem; margin-top: 1rem; }
