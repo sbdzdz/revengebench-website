@@ -251,7 +251,7 @@ body {
 
 .hero-description {
     max-width: 650px;
-    margin: 0 auto 2rem;
+    margin: 0 0 2rem;
 }
 
 .hero-description p {
@@ -1128,13 +1128,11 @@ tbody tr:last-child td {
         white-space: normal;
         letter-spacing: 0.01em;
         margin-top: 0.25rem;
-        padding: 0 1rem;
     }
 
     .hero-description {
         margin-top: 1.5rem;
         margin-bottom: 1.5rem;
-        padding: 0 1.5rem;
     }
 
     .hero-description p {
@@ -2141,6 +2139,9 @@ body {
     letter-spacing: -0.04em;
     font-weight: 700;
     margin-bottom: 1.5rem;
+    /* Optically align the big glyph's visual left edge with the body text
+       below (cancels the font's left side-bearing, magnified at display size). */
+    margin-left: -0.06em;
 }
 .hero-subtitle {
     font-size: 1.3rem;
