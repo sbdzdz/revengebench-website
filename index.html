@@ -89,43 +89,9 @@
         <div class="container">
             <h2 class="section-title">Leaderboard</h2>
             <p class="section-description">Distance reduction across the five arenas. Higher is better.</p>
-            <div class="leaderboard-chart">
-                <div class="leaderboard-chart-wrapper">
-                    <canvas id="performanceChart"></canvas>
-                </div>
-            </div>
-            <div class="leaderboard-controls">
-                <label class="model-select-label">Elo tier:</label>
-                <div class="custom-dropdown">
-                    <div class="dropdown-selected" id="elo-tier-display">All targets</div>
-                    <div class="dropdown-options" id="elo-tier-options">
-                        <div class="dropdown-option active" data-value="all">All targets</div>
-                        <div class="dropdown-option" data-value="high">High Elo (top 5 per arena)</div>
-                        <div class="dropdown-option" data-value="mid">Mid Elo (next 5 per arena)</div>
-                        <div class="dropdown-option" data-value="low">Low Elo (bottom 5 per arena)</div>
-                    </div>
-                </div>
-            </div>
-            <div class="leaderboard-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Rank</th>
-                            <th>Model</th>
-                            <th>Avg</th>
-                            <th class="arena-col">BattleSnake</th>
-                            <th class="arena-col">Halite</th>
-                            <th class="arena-col">Poker</th>
-                            <th class="arena-col">RoboCode</th>
-                            <th class="arena-col">RobotRumble</th>
-                        </tr>
-                    </thead>
-                    <tbody id="leaderboard-data"></tbody>
-                </table>
-            </div>
-
             <div class="arena-tabs" role="tablist">
-                <button class="arena-tab active" data-arena="battlesnake" role="tab">BattleSnake</button>
+                <button class="arena-tab active" data-arena="all" role="tab">All</button>
+                <button class="arena-tab" data-arena="battlesnake" role="tab">BattleSnake</button>
                 <button class="arena-tab" data-arena="halite" role="tab">Halite</button>
                 <button class="arena-tab" data-arena="poker" role="tab">Poker</button>
                 <button class="arena-tab" data-arena="robocode" role="tab">RoboCode</button>
@@ -133,7 +99,7 @@
             </div>
             <div class="leaderboard-chart">
                 <div class="leaderboard-chart-wrapper">
-                    <canvas id="detailedChart"></canvas>
+                    <canvas id="performanceChart"></canvas>
                 </div>
             </div>
         </div>

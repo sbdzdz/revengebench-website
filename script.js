@@ -8,7 +8,6 @@ if (typeof ChartDataLabels !== 'undefined') {
 }
 
 let performanceChart = null;
-let detailedChart = null;
 
 // ─────────────────────────────────────────────────────────────────────────
 // Model-family icons rendered inside each bar
@@ -185,29 +184,7 @@ function calculateFontSizes(canvas) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────
-// Leaderboard table
-// ─────────────────────────────────────────────────────────────────────────
-function populateLeaderboard() {
-    const tbody = document.getElementById('leaderboard-data');
-    if (!tbody) return;
-    tbody.innerHTML = '';
-
-    leaderboardData.forEach(row => {
-        const tr = document.createElement('tr');
-        const arenaCells = arenas.map(a =>
-            `<td class="arena-col">${row.scores[a.key].toFixed(0)}</td>`
-        ).join('');
-        tr.innerHTML =
-            `<td class="rank-cell">${row.rank}</td>` +
-            `<td class="model-cell">${row.name}</td>` +
-            `<td class="avg-cell"><strong>${row.avg.toFixed(1)}</strong></td>` +
-            arenaCells;
-        tbody.appendChild(tr);
-    });
-}
-
-// ─────────────────────────────────────────────────────────────────────────
-// Aggregate chart (one bar per model, averaged across arenas)
+// Leaderboard chart (tabbed: "All" = averaged across arenas, or one arena)
 // ─────────────────────────────────────────────────────────────────────────
 function sizeChartWrapper(canvas, rowCount) {
     const wrapper = canvas.parentElement;
@@ -217,7 +194,10 @@ function sizeChartWrapper(canvas, rowCount) {
     }
 }
 
-function createAggregateChart() {
+// view: 'all' = averaged across arenas; otherwise an arena key (per-arena breakdown).
+let currentView = 'all';
+
+function createChart(view) {
     const canvas = document.getElementById('performanceChart');
     if (!canvas) return;
     if (performanceChart) performanceChart.destroy();
@@ -225,10 +205,11 @@ function createAggregateChart() {
     const tokens = themeTokens();
     const fonts = calculateFontSizes(canvas);
 
+    const valueOf = view === 'all' ? (r => r.avg) : (r => r.scores[view]);
     // Descending — best at top, worst at bottom (Chart.js renders first category at top of y-axis).
-    const sorted = [...leaderboardData].sort((a, b) => b.avg - a.avg);
+    const sorted = [...leaderboardData].sort((a, b) => valueOf(b) - valueOf(a));
     const labels = sorted.map(r => r.name);
-    const data = sorted.map(r => r.avg);
+    const data = sorted.map(valueOf);
     sizeChartWrapper(canvas, sorted.length);
 
     performanceChart = new Chart(canvas, {
@@ -274,122 +255,22 @@ function createAggregateChart() {
     });
 }
 
-// ─────────────────────────────────────────────────────────────────────────
-// Per-arena detailed chart
-// ─────────────────────────────────────────────────────────────────────────
-let currentArena = 'battlesnake';
-
-function createDetailedChart(arenaKey) {
-    const canvas = document.getElementById('detailedChart');
-    if (!canvas) return;
-    if (detailedChart) detailedChart.destroy();
-
-    const tokens = themeTokens();
-    const fonts = calculateFontSizes(canvas);
-
-    const sorted = [...leaderboardData].sort((a, b) => b.scores[arenaKey] - a.scores[arenaKey]);
-    const labels = sorted.map(r => r.name);
-    const data = sorted.map(r => r.scores[arenaKey]);
-    sizeChartWrapper(canvas, sorted.length);
-
-    detailedChart = new Chart(canvas, {
-        type: 'bar',
-        data: {
-            labels,
-            datasets: [{
-                label: 'Δ (%)',
-                data,
-                backgroundColor: tokens.text,
-                borderColor: tokens.text,
-                borderWidth: 0,
-                barPercentage: 0.95,
-                categoryPercentage: 0.85
-            }]
-        },
-        options: {
-            indexAxis: 'y',
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: { display: false },
-                tooltip: { enabled: false },
-                datalabels: {
-                    color: ctx => ctx.dataset.data[ctx.dataIndex] < 15 ? tokens.text : tokens.bg,
-                    anchor: 'end',
-                    align: ctx => ctx.dataset.data[ctx.dataIndex] < 15 ? 'end' : 'start',
-                    offset: 8,
-                    font: { weight: 500, size: fonts.tick },
-                    formatter: v => `${Math.round(v)}%`
-                },
-                modelIcons: { color: tokens.bg }
-            },
-            scales: {
-                x: { min: 0, max: 85, display: false },
-                y: {
-                    grid: { display: false },
-                    border: { display: false },
-                    ticks: { color: tokens.text, font: { size: fonts.tick, weight: 500 } }
-                }
-            }
-        }
-    });
-}
-
-function arenaLabel(key) {
-    return arenas.find(a => a.key === key)?.name || key;
-}
-
 function rerenderCharts() {
-    createAggregateChart();
-    createDetailedChart(currentArena);
+    createChart(currentView);
 }
 
 // ─────────────────────────────────────────────────────────────────────────
-// Custom dropdown (arena selector, Elo tier selector)
+// Leaderboard view tabs: "All" (averaged) + one per arena
 // ─────────────────────────────────────────────────────────────────────────
-function bindDropdown(displayEl, optionsEl, onSelect) {
-    if (!displayEl || !optionsEl) return;
-    const dropdown = displayEl.closest('.custom-dropdown');
-
-    displayEl.addEventListener('click', e => {
-        e.stopPropagation();
-        document.querySelectorAll('.custom-dropdown.open').forEach(d => {
-            if (d !== dropdown) d.classList.remove('open');
-        });
-        dropdown.classList.toggle('open');
-    });
-
-    optionsEl.querySelectorAll('.dropdown-option').forEach(opt => {
-        opt.addEventListener('click', () => {
-            optionsEl.querySelectorAll('.dropdown-option').forEach(o => o.classList.remove('active'));
-            opt.classList.add('active');
-            displayEl.textContent = opt.textContent;
-            dropdown.classList.remove('open');
-            onSelect(opt.dataset.value);
-        });
-    });
-}
-
-document.addEventListener('click', () => {
-    document.querySelectorAll('.custom-dropdown.open').forEach(d => d.classList.remove('open'));
-});
-
-// Per-arena tabs
 const arenaTabs = document.querySelectorAll('.arena-tab');
 arenaTabs.forEach(tab => {
     tab.addEventListener('click', () => {
         arenaTabs.forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
-        currentArena = tab.dataset.arena;
-        createDetailedChart(currentArena);
+        currentView = tab.dataset.arena;  // 'all' or an arena key
+        createChart(currentView);
     });
 });
-
-bindDropdown(
-    document.getElementById('elo-tier-display'),
-    document.getElementById('elo-tier-options'),
-    () => { /* no-op for v1; wires up when real data lands */ }
-);
 
 // ─────────────────────────────────────────────────────────────────────────
 // Arena card descriptions — pulled from config.js arenaDescriptions
@@ -473,15 +354,14 @@ window.addEventListener('resize', () => {
 loadScoresData()
     .then(() => preloadIcons(themeTokens().bg))
     .then(() => {
-        populateLeaderboard();
         rerenderCharts();
     })
     .catch(err => {
         console.error('Failed to load scores.json:', err);
-        const tbody = document.getElementById('leaderboard-data');
-        if (tbody) {
-            tbody.innerHTML =
-                `<tr><td colspan="8" style="text-align:center;padding:24px;color:var(--text-secondary)">
-                 Failed to load leaderboard data — check the console.</td></tr>`;
+        const chart = document.querySelector('#leaderboard .leaderboard-chart');
+        if (chart) {
+            chart.innerHTML =
+                `<p style="text-align:center;padding:24px;color:var(--text-secondary)">
+                 Failed to load leaderboard data — check the console.</p>`;
         }
     });
