@@ -2162,6 +2162,7 @@ body {
     justify-content: flex-start;
     margin-top: 2.5rem;
 }
+.hero-buttons .btn-secondary { min-width: 7rem; justify-content: center; }
 
 /* Buttons */
 .btn {
@@ -2583,6 +2584,9 @@ html { font-size: 19px; }
 }
 
 [data-theme="dark"] .hero-logo { filter: invert(1); }
+
+.btn .btn-icon { width: 14px; height: 14px; display: inline-block; vertical-align: middle; }
+[data-theme="dark"] .btn .btn-icon { filter: invert(1); }
 
 .findings-nav {
     display: flex;
