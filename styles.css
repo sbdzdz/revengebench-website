@@ -356,7 +356,7 @@ body {
 /* Section Styles */
 section {
     padding: 4rem 0;
-    scroll-margin-top: 64px;  /* clear the sticky navbar when anchored to */
+    scroll-margin-top: 32px;  /* clear the sticky navbar when anchored to */
 }
 
 .section-title {
