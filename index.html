@@ -116,15 +116,15 @@
             <div class="pipeline-grid">
                 <div class="pipeline-stage pipeline-observation" data-step="01">
                     <h3 class="pipeline-stage-title">Observation</h3>
-                    <p class="pipeline-stage-text"><strong>Passive phase</strong>: the learner inspects the game traces of the hidden policy playing against a diverse set of opponents sampled from a policy pool.</p>
+                    <p class="pipeline-stage-text"><strong>Passive phase:</strong> the learner inspects the game traces of the hidden policy playing against a diverse set of opponents sampled from a policy pool.</p>
                 </div>
                 <div class="pipeline-stage pipeline-interaction" data-step="02">
                     <h3 class="pipeline-stage-title">Intervention</h3>
-                    <p class="pipeline-stage-text"><strong>Active phase</strong>: the learner designs probe opponents to elicit specific behaviour from the hidden policy and disambiguate competing hypotheses.</p>
+                    <p class="pipeline-stage-text"><strong>Active phase:</strong> the learner designs probe opponents to elicit specific behaviour from the hidden policy and disambiguate competing hypotheses.</p>
                 </div>
                 <div class="pipeline-stage pipeline-evaluation" data-step="03">
                     <h3 class="pipeline-stage-title">Evaluation</h3>
-                    <p class="pipeline-stage-text"><strong>Test phase</strong>: the learner submits one executable policy, scored by how often it picks the same action as the hidden policy on held-out trajectories.</p>
+                    <p class="pipeline-stage-text"><strong>Test phase:</strong> the learner submits one executable policy, scored by how often it picks the same action as the hidden policy on held-out trajectories.</p>
                 </div>
             </div>
         </div>
@@ -187,13 +187,13 @@
             <div class="protocol-content">
                 <p>RevengeBench operationalises an inverse problem in code-space: given only behavioural traces of an opaque target agent in a programming-game arena, can a learner reconstruct a runnable program that reproduces its decisions? Because targets are themselves executable, hypotheses can be scored mechanically against ground truth, a property that behavioural inverse problems normally lack.</p>
                 <ul class="protocol-list">
-                    <li><strong>Targets</strong>: top 15 strongest policies by Elo per arena, extracted from CodeClash tournaments. 75 in total.</li>
-                    <li><strong>Opponent pool</strong>: 20 opponents sampled each round from the remaining pool.</li>
-                    <li><strong>Starter policy</strong>: arena-specific naive baseline that every learner edits from.</li>
-                    <li><strong>Protocol</strong>: closed loop of observation, intervention through probe opponents, hypothesis formulation, and evaluation. 5 rounds with persistent memory; best round reported for each model.</li>
-                    <li><strong>Probe budget</strong>: 5 probe opponents per round in the intervention regime.</li>
-                    <li><strong>Harness</strong>: mini-SWE-agent.</li>
-                    <li><strong>Metric</strong>: distance reduction
+                    <li><strong>Targets:</strong> top 15 strongest policies by Elo per arena, extracted from CodeClash tournaments. 75 in total.</li>
+                    <li><strong>Opponent pool:</strong> 20 opponents sampled each round from the remaining pool.</li>
+                    <li><strong>Starter policy:</strong> arena-specific naive baseline that every learner edits from.</li>
+                    <li><strong>Protocol:</strong> closed loop of observation, intervention through probe opponents, hypothesis formulation, and evaluation. 5 rounds with persistent memory; best round reported for each model.</li>
+                    <li><strong>Probe budget:</strong> 5 probe opponents per round in the intervention regime.</li>
+                    <li><strong>Harness:</strong> mini-SWE-agent.</li>
+                    <li><strong>Metric:</strong> distance reduction
                         <span class="protocol-metric">$$\Delta = \frac{D_0 - D_R}{D_0}$$</span>
                         where $D_0$ and $D_R$ are mean action distances of the starter policy $\hat{\pi}_0$ and the final hypothesis $\hat{\pi}_R$. Reporting $\Delta$ controls for differences in baseline difficulty across targets and arenas.
                     </li>
@@ -208,50 +208,53 @@
             <h2 class="section-title">Findings</h2>
             <div class="findings-carousel">
                 <div class="findings-tabs" role="tablist">
-                    <button class="findings-tab active" data-index="0" role="tab">Recovered intel</button>
-                    <button class="findings-tab" data-index="1" role="tab">Placeholder finding</button>
-                    <button class="findings-tab" data-index="2" role="tab">Placeholder finding</button>
+                    <button class="findings-tab active" data-index="0" role="tab">Probing helps stronger models</button>
+                    <button class="findings-tab" data-index="1" role="tab">Recovered strategies are useful</button>
+                    <button class="findings-tab" data-index="2" role="tab">Act vs. inspect</button>
                 </div>
                 <div class="finding-slide active">
+                    <h3 class="finding-title">Probing helps stronger models</h3>
+                    <div class="finding-body">
+                        <p>The learner can run its own experiments, designing opponents to probe the hidden bot. We measure whether probing improves recovery, and for which models.</p>
+                        <ul>
+                            <li><strong>Probing is front-loaded:</strong> probe counts peak in the early rounds and decline as the agent converges on a hypothesis.</li>
+                            <li><strong>Probing helps:</strong> probing improves recovery in 16 of 20 model–game pairs, but the gains concentrate in the stronger models.</li>
+                            <li><strong>Weaker models design worse probes:</strong> stronger models craft targeted experiments to expose the target's decision rules. Weaker models fall back on trivial probes that do nothing and reveal little.</li>
+                        </ul>
+                    </div>
+                    <div class="finding-figure">
+                        <img class="finding-fig finding-fig-light" src="assets/figures/probing_light.svg" alt="Probe boost vs probes used per model–game, alongside mean probes per tournament by game and round">
+                        <img class="finding-fig finding-fig-dark" src="assets/figures/probing_dark.svg" alt="Probe boost vs probes used per model–game, alongside mean probes per tournament by game and round">
+                    </div>
+                </div>
+                <div class="finding-slide">
                     <h3 class="finding-title">Recovered strategies are actionable intelligence</h3>
                     <div class="finding-body">
-                        <p>To test whether a recovered strategy is useful, we ask an LLM agent to write a policy that plays the original target. We give it three levels of intel about the target: just the game rules (blind), our pipeline's reconstruction (recovered), or the ground-truth code (oracle). We measure the <em>win-rate gain</em>: the increase in win rate relative to the blind baseline. Across 5 challengers, 4 games, and 720 tournaments:</p>
+                        <p>To test whether a recovered strategy is useful, we ask an LLM agent to write a policy that plays the original target. We give it three levels of intel about the target: just the game rules (blind), our pipeline's reconstruction (recovered), or the ground-truth code (oracle). We measure the <em>win rate gain</em>: the increase in win rate relative to the blind baseline. Across 5 models, 4 games, and 720 tournaments:</p>
                         <ul>
-                            <li><strong>Recovered strategies help in designing counter-strategies</strong>: oracle &gt; recovered &gt; blind across all five models.</li>
-                            <li><strong>Weaker models benefit more</strong>: there is a negative correlation between blind win rate and how much the recovered policy helps.</li>
-                            <li><strong>Stronger models catch up</strong>: the recovered-policy advantage shrinks over rounds for strong models as their blind play catches up.</li>
+                            <li><strong>Recovered strategies help in designing counter-strategies:</strong> oracle &gt; recovered &gt; blind across all five models.</li>
+                            <li><strong>Weaker models benefit more:</strong> there is a negative correlation between blind win rate and how much the recovered policy helps.</li>
+                            <li><strong>Stronger models catch up:</strong> the recovered-policy advantage shrinks over rounds for strong models as their blind play improves.</li>
                         </ul>
                     </div>
                     <div class="finding-figure">
-                        <img src="assets/figures/pvp_combined_summary_lift.svg" alt="Forward-PvP win rate and intel lift">
+                        <img class="finding-fig finding-fig-light" src="assets/figures/recovered_strategies_light.svg" alt="Forward-PvP win rate and intel lift">
+                        <img class="finding-fig finding-fig-dark" src="assets/figures/recovered_strategies_dark.svg" alt="Forward-PvP win rate and intel lift">
                     </div>
                 </div>
                 <div class="finding-slide">
-                    <h3 class="finding-title">Placeholder finding</h3>
+                    <h3 class="finding-title">Stronger agents act, weaker agents look</h3>
                     <div class="finding-body">
-                        <p>Short narrative goes here.</p>
+                        <p>How an agent spends its turns predicts how well it recovers the strategy. We classify each command as inspecting (reading files and state), executing (running and testing code), writing, or probing.</p>
                         <ul>
-                            <li><strong>Label</strong>: detail.</li>
-                            <li><strong>Label</strong>: detail.</li>
-                            <li><strong>Label</strong>: detail.</li>
+                            <li><strong>Act vs. inspect:</strong> strong agents spend their budget executing and testing hypotheses (~44% of turns for GPT-5.5), while weaker agents spend it reading and inspecting (~44% for GPT-5.4-mini).</li>
+                            <li><strong>And they do more:</strong> GPT-5.5 issues a median of 332 commands per target, versus just 134 for GPT-5.4-mini.</li>
+                            <li><strong>Everyone under-probes:</strong> active experimentation is only 6.7–7.8% of all actions across models, even though it pays off.</li>
                         </ul>
                     </div>
                     <div class="finding-figure">
-                        <!-- Drop a figure here, e.g. <img src="assets/figures/..." alt="..."> -->
-                    </div>
-                </div>
-                <div class="finding-slide">
-                    <h3 class="finding-title">Placeholder finding</h3>
-                    <div class="finding-body">
-                        <p>Short narrative goes here.</p>
-                        <ul>
-                            <li><strong>Label</strong>: detail.</li>
-                            <li><strong>Label</strong>: detail.</li>
-                            <li><strong>Label</strong>: detail.</li>
-                        </ul>
-                    </div>
-                    <div class="finding-figure">
-                        <!-- Drop a figure here, e.g. <img src="assets/figures/..." alt="..."> -->
+                        <img class="finding-fig finding-fig-light" src="assets/figures/act_vs_inspect_light.svg" alt="Stacked action-type distribution across rounds for five GPT models">
+                        <img class="finding-fig finding-fig-dark" src="assets/figures/act_vs_inspect_dark.svg" alt="Stacked action-type distribution across rounds for five GPT models">
                     </div>
                 </div>
             </div>

@@ -15,7 +15,7 @@ html {
     --bg-secondary: #0e0e0e;
     --bg-tertiary: #1a1a1a;
     --text-primary: #f5f5f5;
-    --text-secondary: #8a8a8a;
+    --text-secondary: #d5d5d5;
     --accent-primary: #f5f5f5;
     --accent-secondary: #8a8a8a;
     --border-color: #1f1f1f;
@@ -2016,6 +2016,16 @@ td.avg-cell {
     height: auto;
     display: block;
 }
+.finding-figure img.finding-fig-dark { display: none; }
+[data-theme="dark"] .finding-figure img.finding-fig-light { display: none; }
+[data-theme="dark"] .finding-figure img.finding-fig-dark { display: block; }
+.finding-figure-row {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+.finding-fig-cell { flex: 1; min-width: 0; }
+.finding-fig-cell--wide { flex: 2; }
 .carousel-prev,
 .carousel-next {
     position: absolute;
