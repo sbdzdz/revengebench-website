@@ -33,8 +33,8 @@
                         <a href="#leaderboard">Leaderboard</a>
                         <a href="#pipeline">Pipeline</a>
                         <a href="#arenas">Arenas</a>
-                        <a href="#protocol">Protocol</a>
                         <a href="#findings">Findings</a>
+                        <a href="#protocol">Protocol</a>
                         <a href="#team">Team</a>
                     </div>
                     <a href="https://github.com/serhez/revenge-bench" target="_blank" class="nav-github" aria-label="GitHub">
@@ -183,28 +183,6 @@
         </div>
     </section>
 
-    <!-- Protocol -->
-    <section id="protocol" class="protocol">
-        <div class="container">
-            <h2 class="section-title">Protocol</h2>
-            <div class="protocol-content">
-                <p>RevengeBench operationalises an inverse problem in code-space: given only behavioural traces of an opaque target agent in a programming-game arena, can a learner reconstruct a runnable program that reproduces its decisions? Because targets are themselves executable, hypotheses can be scored mechanically against ground truth, a property that behavioural inverse problems normally lack.</p>
-                <ul class="protocol-list">
-                    <li><strong>Targets:</strong> top 15 strongest policies by Elo per arena, extracted from CodeClash tournaments. 75 in total.</li>
-                    <li><strong>Opponent pool:</strong> 20 opponents sampled each round from the remaining pool.</li>
-                    <li><strong>Starter policy:</strong> arena-specific naive baseline that every learner edits from.</li>
-                    <li><strong>Protocol:</strong> closed loop of observation, intervention through probe opponents, hypothesis formulation, and evaluation. 5 rounds with persistent memory; best round reported for each model.</li>
-                    <li><strong>Probe budget:</strong> 5 probe opponents per round in the intervention regime.</li>
-                    <li><strong>Harness:</strong> mini-SWE-agent.</li>
-                    <li><strong>Metric:</strong> distance reduction
-                        <span class="protocol-metric">$$\Delta = \frac{D_0 - D_R}{D_0}$$</span>
-                        where $D_0$ and $D_R$ are mean action distances of the starter policy $\hat{\pi}_0$ and the final hypothesis $\hat{\pi}_R$. Reporting $\Delta$ controls for differences in baseline difficulty across targets and arenas.
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
     <!-- Findings -->
     <section id="findings" class="findings">
         <div class="container">
@@ -256,10 +234,32 @@
                         </ul>
                     </div>
                     <div class="finding-figure">
-                        <img class="finding-fig finding-fig-light" src="assets/figures/act_vs_inspect_light.svg" alt="Stacked action-type distribution across rounds for five GPT models">
-                        <img class="finding-fig finding-fig-dark" src="assets/figures/act_vs_inspect_dark.svg" alt="Stacked action-type distribution across rounds for five GPT models">
+                        <img class="finding-fig finding-fig-light" src="assets/figures/act_vs_inspect_light.svg" alt="Stacked action-type distribution across rounds for four GPT models">
+                        <img class="finding-fig finding-fig-dark" src="assets/figures/act_vs_inspect_dark.svg" alt="Stacked action-type distribution across rounds for four GPT models">
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Protocol -->
+    <section id="protocol" class="protocol">
+        <div class="container">
+            <h2 class="section-title">Protocol</h2>
+            <div class="protocol-content">
+                <p>RevengeBench operationalises an inverse problem in code-space: given only behavioural traces of an opaque target agent in a programming-game arena, can a learner reconstruct a runnable program that reproduces its decisions? Because targets are themselves executable, hypotheses can be scored mechanically against ground truth, a property that behavioural inverse problems normally lack.</p>
+                <ul class="protocol-list">
+                    <li><strong>Targets:</strong> top 15 strongest policies by Elo per arena, extracted from CodeClash tournaments. 75 in total.</li>
+                    <li><strong>Opponent pool:</strong> 20 opponents sampled each round from the remaining pool.</li>
+                    <li><strong>Starter policy:</strong> arena-specific naive baseline that every learner edits from.</li>
+                    <li><strong>Protocol:</strong> closed loop of observation, intervention through probe opponents, hypothesis formulation, and evaluation. 5 rounds with persistent memory; best round reported for each model.</li>
+                    <li><strong>Probe budget:</strong> 5 probe opponents per round in the intervention regime.</li>
+                    <li><strong>Harness:</strong> mini-SWE-agent.</li>
+                    <li><strong>Metric:</strong> distance reduction
+                        <span class="protocol-metric">$$\Delta = \frac{D_0 - D_R}{D_0}$$</span>
+                        where $D_0$ and $D_R$ are mean action distances of the starter policy $\hat{\pi}_0$ and the final hypothesis $\hat{\pi}_R$. Reporting $\Delta$ controls for differences in baseline difficulty across targets and arenas.
+                    </li>
+                </ul>
             </div>
         </div>
     </section>
