@@ -145,10 +145,10 @@ if (hamburgerBtn) {
 // ─────────────────────────────────────────────────────────────────────────
 // Theme toggle
 // ─────────────────────────────────────────────────────────────────────────
+// The saved theme is applied by an inline script in <head> before first
+// paint, so no flash correction is needed here.
 const themeToggle = document.getElementById('theme-toggle');
 const htmlEl = document.documentElement;
-const savedTheme = localStorage.getItem('theme') || 'light';
-htmlEl.setAttribute('data-theme', savedTheme);
 
 if (themeToggle) {
     themeToggle.addEventListener('click', () => {
