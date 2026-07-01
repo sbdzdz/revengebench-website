@@ -191,7 +191,7 @@
                 <div class="findings-tabs" role="tablist">
                     <button class="findings-tab active" data-index="0" role="tab">Probing helps stronger models</button>
                     <button class="findings-tab" data-index="1" role="tab">Recovered strategies are useful</button>
-                    <button class="findings-tab" data-index="2" role="tab">Act vs. inspect</button>
+                    <button class="findings-tab" data-index="2" role="tab">Act vs. look</button>
                 </div>
                 <div class="finding-slide active">
                     <h3 class="finding-title">Probing helps stronger models</h3>
@@ -228,9 +228,9 @@
                     <div class="finding-body">
                         <p>How an agent spends its turns predicts how well it recovers the strategy. We classify each command as inspecting (reading files and state), executing (running and testing code), writing, or probing.</p>
                         <ul>
-                            <li><strong>Act vs. inspect:</strong> strong agents spend their budget executing and testing hypotheses (~44% of turns for GPT-5.5), while weaker agents spend it reading and inspecting (~44% for GPT-5.4-mini).</li>
-                            <li><strong>And they do more:</strong> GPT-5.5 issues a median of 332 commands per target, versus just 134 for GPT-5.4-mini.</li>
-                            <li><strong>Everyone under-probes:</strong> active experimentation is only 6.7–7.8% of all actions across models, even though it pays off.</li>
+                            <li><strong>Act vs. look:</strong> strong agents test hypotheses, weak agents gather context: GPT-5.5's most common action is executing code, GPT-5.4-mini's is reading files.</li>
+                            <li><strong>Strong agents are busier:</strong> GPT-5.5 issues roughly 2.5&times; as many commands per target as GPT-5.4-mini before submitting.</li>
+                            <li><strong>Everyone under-probes:</strong> active experimentation is the rarest action type for nearly every model, even though it pays off.</li>
                         </ul>
                     </div>
                     <div class="finding-figure">
