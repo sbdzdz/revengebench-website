@@ -1195,6 +1195,7 @@ tbody tr:last-child td {
         background: var(--bg-secondary);
         border-bottom: 1px solid var(--border-color);
         flex-direction: column;
+        align-items: stretch;
         padding: 1rem;
         gap: 0;
         display: none;

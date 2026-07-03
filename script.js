@@ -124,20 +124,20 @@ const navLinks = document.getElementById('nav-links');
 if (hamburgerBtn) {
     hamburgerBtn.addEventListener('click', () => {
         hamburgerBtn.classList.toggle('active');
-        navLinks.classList.toggle('open');
+        navLinks.classList.toggle('active');
     });
 
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => {
             hamburgerBtn.classList.remove('active');
-            navLinks.classList.remove('open');
+            navLinks.classList.remove('active');
         });
     });
 
     document.addEventListener('click', (e) => {
         if (!hamburgerBtn.contains(e.target) && !navLinks.contains(e.target)) {
             hamburgerBtn.classList.remove('active');
-            navLinks.classList.remove('open');
+            navLinks.classList.remove('active');
         }
     });
 }
