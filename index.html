@@ -212,7 +212,7 @@
                         <p>The learner can run its own experiments, designing opponents to probe the hidden bot. We measure whether probing improves recovery, and for which models.</p>
                         <ul>
                             <li><strong>Probing is front-loaded:</strong> probe counts peak in the early rounds and decline as the agent converges on a hypothesis.</li>
-                            <li><strong>Probing helps:</strong> probing improves recovery in 16 of 20 model–game pairs, but the gains concentrate in the stronger models.</li>
+                            <li><strong>Probing helps:</strong> probing improves recovery in 16 of 20 model–arena pairs, but the gains concentrate in the stronger models.</li>
                             <li><strong>Weaker models design worse probes:</strong> stronger models craft targeted experiments to expose the target's decision rules. Weaker models fall back on trivial probes that do nothing and reveal little.</li>
                         </ul>
                     </div>
@@ -224,7 +224,7 @@
                 <div class="finding-slide">
                     <h3 class="finding-title">Recovered strategies are actionable intelligence</h3>
                     <div class="finding-body">
-                        <p>To test whether a recovered strategy is useful, we ask an LLM agent to write a policy that plays the original target. We give it three levels of intel about the target: just the game rules (blind), our pipeline's reconstruction (recovered), or the ground-truth code (oracle). We measure the <em>win rate gain</em>: the increase in win rate relative to the blind baseline. Across 5 models, 4 games, and 720 tournaments:</p>
+                        <p>To test whether a recovered strategy is useful, we ask an LLM agent to write a policy that plays the original target. We give it three levels of intel about the target: just the game rules (blind), our pipeline's reconstruction (recovered), or the ground-truth code (oracle). We measure the <em>win rate gain</em>: the increase in win rate relative to the blind baseline. Across 5 models, 4 of the 5 arenas, and 720 tournaments:</p>
                         <ul>
                             <li><strong>Recovered strategies help in designing counter-strategies:</strong> oracle &gt; recovered &gt; blind across all five models.</li>
                             <li><strong>Weaker models benefit more:</strong> there is a negative correlation between blind win rate and how much the recovered policy helps.</li>
