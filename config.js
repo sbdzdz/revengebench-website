@@ -17,12 +17,3 @@ const arenaDescriptions = {
     robocode:    "Tank duels: control velocity, direction, and turret heading.",
     robotrumble: "Robot swarm combat: command each unit on every turn."
 };
-
-// Elo tiers (filters the underlying targets, not the model list).
-// Placeholder; wire to real data when results are generated.
-const eloTiers = [
-    { key: "all",  label: "All targets" },
-    { key: "high", label: "High Elo (top 5 per arena)" },
-    { key: "mid",  label: "Mid Elo (next 5 per arena)" },
-    { key: "low",  label: "Low Elo (bottom 5 per arena)" }
-];
