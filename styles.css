@@ -18,7 +18,7 @@ html {
     --text-secondary: #d5d5d5;
     --accent-primary: #fafafa;
     --accent-secondary: #8a8a8a;
-    --border-color: #1f1f1f;
+    --border-color: #383838;
     --success: #10b981;
     --warning: #f59e0b;
     --danger: #ef4444;
@@ -122,7 +122,7 @@ body {
 .nav-right {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 3.5rem;
 }
 
 .logo {
@@ -154,21 +154,6 @@ body {
 
 .nav-links a:hover {
     color: var(--text-primary);
-}
-
-.nav-github {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-secondary);
-    padding: 0.5rem;
-    border-radius: 0.375rem;
-    transition: var(--transition);
-}
-
-.nav-github:hover {
-    color: var(--text-primary);
-    background: var(--bg-tertiary);
 }
 
 /* Hamburger Menu */
@@ -2144,11 +2129,10 @@ td.avg-cell {
 }
 .carousel-dot,
 .hamburger-line,
-.theme-toggle,
-.nav-github {
+.theme-toggle {
     border-radius: 0;
 }
-.theme-toggle, .nav-github { border: none; padding: 0.5rem; }
+.theme-toggle { border: none; padding: 0.5rem; }
 .carousel-dot { border-radius: 50%; }
 
 body {
@@ -2480,8 +2464,6 @@ section {
 .title-accent { color: var(--text-primary); }
 
 .theme-toggle { border: 1px solid var(--border-color) !important; }
-.nav-github { color: var(--text-secondary); }
-.nav-github:hover { color: var(--text-primary); background: transparent; }
 
 .team-inline,
 .team-affiliations,
