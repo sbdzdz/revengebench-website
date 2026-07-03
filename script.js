@@ -254,6 +254,13 @@ function createChart(view) {
             }
         }
     });
+
+    // Screen-reader fallback
+    const viewName = view === 'all' ? 'all arenas' : (arenas.find(a => a.key === view)?.name || view);
+    canvas.setAttribute('role', 'img');
+    canvas.setAttribute('aria-label',
+        `Leaderboard, ${viewName}: ` +
+        sorted.map((r, i) => `${i + 1}. ${r.name}, ${Math.round(valueOf(r))}%`).join('; ') + '.');
 }
 
 function rerenderCharts() {
