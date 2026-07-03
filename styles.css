@@ -1770,13 +1770,11 @@ tbody tr:last-child td {
     }
 }
 
-/* Focus rings — keyboard-only, applied uniformly across interactive
-   elements so tab-navigation never lands on something with no visible
-   focus indicator. :focus-visible (vs :focus) skips mouse clicks, so
-   pointer users don't see rings flash. */
-:where(.btn, .copy-btn, .theme-toggle, .toggle-btn, .toggle-table-btn,
-       .nav-github, .nav-links a, .dropdown-selected, .hamburger,
-       a.team-lead, .changelog summary, details > summary):focus-visible {
+/* Focus rings — keyboard-only, applied uniformly to every interactive
+   element so tab-navigation never lands on something showing the
+   browser's default ring. :focus-visible (vs :focus) skips mouse
+   clicks, so pointer users don't see rings flash. */
+:focus-visible {
     outline: 2px solid var(--accent-primary);
     outline-offset: 2px;
 }

@@ -34,7 +34,7 @@
         <div class="container">
             <div class="nav-content">
                 <div class="nav-left">
-                    <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu">
+                    <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
                         <span class="hamburger-line"></span>
                         <span class="hamburger-line"></span>
                         <span class="hamburger-line"></span>
@@ -109,15 +109,15 @@
         <div class="container">
             <h2 class="section-title">Leaderboard</h2>
             <p class="section-description">Distance reduction across the five arenas. Higher is better.</p>
-            <div class="arena-tabs" role="tablist">
-                <button class="arena-tab active" data-arena="all" role="tab">All</button>
-                <button class="arena-tab" data-arena="battlesnake" role="tab">BattleSnake</button>
-                <button class="arena-tab" data-arena="halite" role="tab">Halite</button>
-                <button class="arena-tab" data-arena="poker" role="tab">Poker</button>
-                <button class="arena-tab" data-arena="robocode" role="tab">RoboCode</button>
-                <button class="arena-tab" data-arena="robotrumble" role="tab">RobotRumble</button>
+            <div class="arena-tabs" role="tablist" aria-label="Leaderboard view">
+                <button class="arena-tab active" data-arena="all" role="tab" aria-selected="true" aria-controls="leaderboard-panel">All</button>
+                <button class="arena-tab" data-arena="battlesnake" role="tab" aria-selected="false" aria-controls="leaderboard-panel">BattleSnake</button>
+                <button class="arena-tab" data-arena="halite" role="tab" aria-selected="false" aria-controls="leaderboard-panel">Halite</button>
+                <button class="arena-tab" data-arena="poker" role="tab" aria-selected="false" aria-controls="leaderboard-panel">Poker</button>
+                <button class="arena-tab" data-arena="robocode" role="tab" aria-selected="false" aria-controls="leaderboard-panel">RoboCode</button>
+                <button class="arena-tab" data-arena="robotrumble" role="tab" aria-selected="false" aria-controls="leaderboard-panel">RobotRumble</button>
             </div>
-            <div class="leaderboard-chart">
+            <div class="leaderboard-chart" role="tabpanel" id="leaderboard-panel" aria-label="Leaderboard chart">
                 <div class="leaderboard-chart-wrapper">
                     <canvas id="performanceChart"></canvas>
                 </div>
@@ -201,12 +201,12 @@
         <div class="container">
             <h2 class="section-title">Findings</h2>
             <div class="findings-carousel">
-                <div class="findings-tabs" role="tablist">
-                    <button class="findings-tab active" data-index="0" role="tab">Probing helps stronger models</button>
-                    <button class="findings-tab" data-index="1" role="tab">Recovered strategies are useful</button>
-                    <button class="findings-tab" data-index="2" role="tab">Act vs. look</button>
+                <div class="findings-tabs" role="tablist" aria-label="Findings">
+                    <button class="findings-tab active" data-index="0" role="tab" id="findings-tab-0" aria-selected="true" aria-controls="finding-slide-0">Probing helps stronger models</button>
+                    <button class="findings-tab" data-index="1" role="tab" id="findings-tab-1" aria-selected="false" aria-controls="finding-slide-1">Recovered strategies are useful</button>
+                    <button class="findings-tab" data-index="2" role="tab" id="findings-tab-2" aria-selected="false" aria-controls="finding-slide-2">Act vs. look</button>
                 </div>
-                <div class="finding-slide active">
+                <div class="finding-slide active" role="tabpanel" id="finding-slide-0" aria-labelledby="findings-tab-0">
                     <h3 class="finding-title">Probing helps stronger models</h3>
                     <div class="finding-body">
                         <p>The learner can run its own experiments, designing opponents to probe the hidden bot. We measure whether probing improves recovery, and for which models.</p>
@@ -221,7 +221,7 @@
                         <img class="finding-fig finding-fig-dark" src="assets/figures/probing_dark.svg" alt="Probe boost vs probes used per model–game, alongside mean probes per tournament by game and round">
                     </div>
                 </div>
-                <div class="finding-slide">
+                <div class="finding-slide" role="tabpanel" id="finding-slide-1" aria-labelledby="findings-tab-1">
                     <h3 class="finding-title">Recovered strategies are actionable intelligence</h3>
                     <div class="finding-body">
                         <p>To test whether a recovered strategy is useful, we ask an LLM agent to write a policy that plays the original target. We give it three levels of intel about the target: just the game rules (blind), our pipeline's reconstruction (recovered), or the ground-truth code (oracle). We measure the <em>win rate gain</em>: the increase in win rate relative to the blind baseline. Across 5 models, 4 of the 5 arenas, and 720 tournaments:</p>
@@ -236,7 +236,7 @@
                         <img class="finding-fig finding-fig-dark" src="assets/figures/recovered_strategies_dark.svg" alt="Forward-PvP win rate and intel lift">
                     </div>
                 </div>
-                <div class="finding-slide">
+                <div class="finding-slide" role="tabpanel" id="finding-slide-2" aria-labelledby="findings-tab-2">
                     <h3 class="finding-title">Stronger agents act, weaker agents look</h3>
                     <div class="finding-body">
                         <p>How an agent spends its turns predicts how well it recovers the strategy. We classify each command as inspecting (reading files and state), executing (running and testing code), writing, or probing.</p>

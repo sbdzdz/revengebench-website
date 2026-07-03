@@ -122,22 +122,23 @@ const hamburgerBtn = document.getElementById('hamburger-btn');
 const navLinks = document.getElementById('nav-links');
 
 if (hamburgerBtn) {
+    const setMenu = (open) => {
+        hamburgerBtn.classList.toggle('active', open);
+        navLinks.classList.toggle('active', open);
+        hamburgerBtn.setAttribute('aria-expanded', String(open));
+    };
+
     hamburgerBtn.addEventListener('click', () => {
-        hamburgerBtn.classList.toggle('active');
-        navLinks.classList.toggle('active');
+        setMenu(!navLinks.classList.contains('active'));
     });
 
     document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            hamburgerBtn.classList.remove('active');
-            navLinks.classList.remove('active');
-        });
+        link.addEventListener('click', () => setMenu(false));
     });
 
     document.addEventListener('click', (e) => {
         if (!hamburgerBtn.contains(e.target) && !navLinks.contains(e.target)) {
-            hamburgerBtn.classList.remove('active');
-            navLinks.classList.remove('active');
+            setMenu(false);
         }
     });
 }
@@ -260,16 +261,43 @@ function rerenderCharts() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────
+// ARIA tablist behavior: aria-selected + arrow-key nav. All tabs stay in
+// the Tab order (no roving tabindex) so keyboard users can step through
+// them directly.
+// ─────────────────────────────────────────────────────────────────────────
+function setupTablist(tabs, onActivate) {
+    const list = Array.from(tabs);
+    const select = (i) => {
+        list.forEach((t, j) => {
+            t.classList.toggle('active', j === i);
+            t.setAttribute('aria-selected', j === i ? 'true' : 'false');
+        });
+        onActivate(i);
+    };
+    list.forEach((tab, i) => {
+        tab.addEventListener('click', () => select(i));
+        tab.addEventListener('keydown', (e) => {
+            let j = null;
+            if (e.key === 'ArrowRight') j = (i + 1) % list.length;
+            else if (e.key === 'ArrowLeft') j = (i - 1 + list.length) % list.length;
+            else if (e.key === 'Home') j = 0;
+            else if (e.key === 'End') j = list.length - 1;
+            if (j !== null) {
+                e.preventDefault();
+                select(j);
+                list[j].focus();
+            }
+        });
+    });
+}
+
+// ─────────────────────────────────────────────────────────────────────────
 // Leaderboard view tabs: "All" (averaged) + one per arena
 // ─────────────────────────────────────────────────────────────────────────
 const arenaTabs = document.querySelectorAll('.arena-tab');
-arenaTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-        arenaTabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        currentView = tab.dataset.arena;  // 'all' or an arena key
-        createChart(currentView);
-    });
+setupTablist(arenaTabs, (i) => {
+    currentView = arenaTabs[i].dataset.arena;  // 'all' or an arena key
+    createChart(currentView);
 });
 
 // ─────────────────────────────────────────────────────────────────────────
@@ -291,13 +319,8 @@ if (carousel) {
     const slides = carousel.querySelectorAll('.finding-slide');
     const tabs = carousel.querySelectorAll('.findings-tab');
 
-    const show = (i) => {
+    setupTablist(tabs, (i) => {
         slides.forEach((s, j) => s.classList.toggle('active', j === i));
-        tabs.forEach((n, j) => n.classList.toggle('active', j === i));
-    };
-
-    tabs.forEach((btn, i) => {
-        btn.addEventListener('click', () => show(i));
     });
 }
 
